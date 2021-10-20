@@ -8,9 +8,9 @@ import numpy as np
 kWh_consumption = float(sys.argv[1])
 
 # FIXME Would it be better to store coefficients linearly in a matrix? Save for later...
-energy_sources = ['Gasoline','Solar','Nuclear','Coal','Natural Gas'] # TODO add hydro and wind
+energy_sources = ['Gasoline','Solar','Nuclear','Coal','Hydroelectric','Wind','Natural Gas']
 #env_impacts = ['CO2 Emissions']
-#conversion_matrix = 
+#conversion_matrix =
 
 ## Conversion Coefficients
 # Gasoline
@@ -24,7 +24,9 @@ CO2_per_nuclear_kWh = .012
 coal_lb_per_kWh = 1.13
 CO2_per_coal_lb = .914
 # Hydro
+CO2_per_hydro_kWh = .024
 # Wind
+CO2_per_wind_kWh = .011
 # Natural Gas
 ng_cfeet_per_kWh = 7.43
 CO2_per_ng_cfeet = .05503
@@ -39,12 +41,14 @@ nuclear_CO2 = kWh_consumption * CO2_per_nuclear_kWh
 # Coal
 coal_CO2 = kWh_consumption * coal_lb_per_kWh * CO2_per_coal_lb
 # Hydro
+hydro_CO2 = kWh_consumption * CO2_per_hydro_kWh
 # Wind
+wind_CO2 = kWh_consumption * CO2_per_wind_kWh
 # Natural Gas
 ng_CO2 = kWh_consumption * ng_cfeet_per_kWh * CO2_per_ng_cfeet
 
 ## Save and display results
-CO2_env_array = [gas_CO2,solar_CO2,nuclear_CO2,coal_CO2,ng_CO2]
+CO2_env_array = [gas_CO2,solar_CO2,nuclear_CO2,coal_CO2,hydro_CO2,wind_CO2,ng_CO2]
 print("############# CO2 Emissions (in kg) by Energy Source #############")
 for ind in range(len(CO2_env_array)):
     print(energy_sources[ind] + ": " + str(round(CO2_env_array[ind],3)) + " kg")
