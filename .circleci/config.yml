@@ -15,7 +15,9 @@ jobs:
       - checkout
       - run:
           name: "Conversion Methods Tests"
-          command: "python -m unittest TestConversionMethods.py"
+          command: |
+            "sudo pip install numpy"
+            "python -m unittest TestConversionMethods.py"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
