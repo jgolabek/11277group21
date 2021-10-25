@@ -24,7 +24,7 @@ class TestConversionMethods(unittest.TestCase):
             convs.kWhtoBill("Ye2323s")
 
     def test_CO2_normal(self):
-        self.assertEqual(numpy.around(convs.kWhtoCO2(550), 2).tolist(), [139.78, 24.75, 6.6, 568.05, 13.2, 6.05, 224.88])
+        self.assertEqual(numpy.around(convs.kWhtoCO2(551), 2).tolist(), [139.78, 24.75, 6.6, 568.05, 13.2, 6.05, 224.88])
         self.assertEqual(numpy.around(convs.kWhtoCO2(25), 3).tolist(), [6.354, 1.125, 0.3, 25.820, 0.6, 0.275, 10.222])
         self.assertEqual(numpy.around(convs.kWhtoCO2(1234), 3).tolist(), [313.621, 55.53, 14.808, 1274.5, 29.616, 13.574, 504.549])
         self.assertEqual(numpy.around(convs.kWhtoCO2(12.67), 3).tolist(), [3.22, .57, .152, 13.086, .304, .139, 5.18])
