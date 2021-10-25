@@ -9,6 +9,8 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: circleci/python:3.7.5
+    environment:
+      NUMPY_VERSION: 1.15.2
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -16,8 +18,7 @@ jobs:
       - run:
           name: "Conversion Methods Tests"
           command: |
-            "sudo pip install numpy"
-            "python -m unittest TestConversionMethods.py"
+            python -m unittest TestConversionMethods.py
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
