@@ -61,13 +61,51 @@ class TestConversionMethods(unittest.TestCase):
             convs.kWhtoWater("    ")
             convs.kWhtoWater("yippee456")
 
+    def test_SO2_normal(self):
+        self.assertEqual(numpy.around(convs.kWhtoSO2(550), 4).tolist(), [2.7934, 0, 0, 3.3424, 0, 0, .0017])
+        self.assertEqual(numpy.around(convs.kWhtoSO2(33), 4).tolist(), [.1676, 0, 0, .2005, 0, 0, .0001])
+        self.assertEqual(numpy.around(convs.kWhtoSO2(1759), 4).tolist(), [8.934, 0, 0, 10.6894, 0, 0, .0056])
+        self.assertEqual(numpy.around(convs.kWhtoSO2(87.67), 4).tolist(), [.4453, 0, 0, .5328, 0, 0, .0003])
+        self.assertEqual(numpy.around(convs.kWhtoSO2(.08), 4).tolist(), [.0004, 0, 0, .0005, 0, 0, 0])
+        self.assertEqual(numpy.around(convs.kWhtoSO2(862.475), 4).tolist(), [4.3805, 0, 0, 5.2413, 0, 0, .0027])
+
+    def test_SO2_edge(self):
+        self.assertEqual(numpy.around(convs.kWhtoSO2(0), 3).tolist(), [0, 0, 0, 0, 0, 0, 0])
+
+    def test_SO2_invalid(self):
+        with self.assertRaises(TypeError):
+            convs.kWhtoSO2("Yes")
+            convs.kWhtoSO2("")
+            convs.kWhtoSO2("Garbage text here")
+            convs.kWhtoSO2("       ")
+            convs.kWhtoSO2("Etcetera4569873245@$")
+
+    def test_Land_normal(self):
+        self.assertEqual(numpy.around(convs.kWhtoAcres(550), 2).tolist(), [8.8, 19.25, 1.1, 12.32, 0, 82.5, 19.8])
+        self.assertEqual(numpy.around(convs.kWhtoAcres(46), 2).tolist(), [.74, 1.61, .09, 1.03, 0, 6.9, 1.66])
+        self.assertEqual(numpy.around(convs.kWhtoAcres(1467), 2).tolist(), [23.47, 51.35, 2.93, 32.86, .01, 220.05, 52.81])
+        self.assertEqual(numpy.around(convs.kWhtoAcres(62.47), 2).tolist(), [1, 2.19, .12, 1.4, 0, 9.37, 2.25])
+        self.assertEqual(numpy.around(convs.kWhtoAcres(.063), 4).tolist(), [.001, .0022, .0001, .0014, 0, .0094, .0023])
+        self.assertEqual(numpy.around(convs.kWhtoAcres(769.28), 2).tolist(), [12.31, 26.92, 1.54, 17.23, .01, 115.39, 27.69])
+
+    def test_Land_edge(self):
+        self.assertEqual(numpy.around(convs.kWhtoAcres(0), 3).tolist(), [0, 0, 0, 0, 0, 0, 0])
+
+    def test_Land_invalid(self):
+        with self.assertRaises(TypeError):
+            convs.kWhtoAcres("Yes")
+            convs.kWhtoAcres("")
+            convs.kWhtoAcres("Text is not a valid input.")
+            convs.kWhtoAcres("         ")
+            convs.kWhtoAcres("&$*%(*^) and so on")
+
     def test_Score_normal(self):
-        self.assertEqual(numpy.around(convs.kWhtoScore(550), 2).tolist(), [80.12, 191.12, 113.3, 527.95, 130.08, 4.4, 194.94])
-        self.assertEqual(numpy.around(convs.kWhtoScore(48), 3).tolist(), [6.992, 16.68, 9.888, 46.076, 11.352, .384, 17.013])
-        self.assertEqual(numpy.around(convs.kWhtoScore(1825), 3).tolist(), [265.857, 634.188, 375.95, 1751.836, 431.612, 14.6, 646.847])
-        self.assertEqual(numpy.around(convs.kWhtoScore(34.34), 3).tolist(), [5.002, 11.933, 7.074, 32.963, 8.121, .275, 12.171])
-        self.assertEqual(numpy.around(convs.kWhtoScore(.051), 5).tolist(), [.00743, .01772, .01051, .04896, .01206, .00041, .01808])
-        self.assertEqual(numpy.around(convs.kWhtoScore(957.268), 3).tolist(), [139.45, 332.651, 197.197, 918.891, 226.394, 7.658, 339.291])
+        self.assertEqual(numpy.around(convs.kWhtoScore(550), 2).tolist(), [42.96, 100.38, 56.92, 267.89, 65.04, 22.82, 102.42])
+        self.assertEqual(numpy.around(convs.kWhtoScore(48), 2).tolist(), [3.75, 8.76, 4.97, 23.38, 5.68, 1.99, 8.94])
+        self.assertEqual(numpy.around(convs.kWhtoScore(1825), 2).tolist(), [142.55, 333.06, 188.89, 888.91, 215.81, 75.74, 339.85])
+        self.assertEqual(numpy.around(convs.kWhtoScore(34.34), 2).tolist(), [2.68, 6.27, 3.55, 16.73, 4.06, 1.43, 6.39])
+        self.assertEqual(numpy.around(convs.kWhtoScore(.051), 5).tolist(), [.00398, .00931, .00528, .02484, .00603, .00212, .0095])
+        self.assertEqual(numpy.around(convs.kWhtoScore(957.268), 3).tolist(), [74.77, 174.701, 99.077, 466.261, 113.199, 39.727, 178.262])
 
     def test_Score_edge(self):
         self.assertEqual(numpy.around(convs.kWhtoScore(0), 3).tolist(), [0, 0, 0, 0, 0, 0, 0])
@@ -79,7 +117,6 @@ class TestConversionMethods(unittest.TestCase):
             convs.kWhtoScore("This should not work")
             convs.kWhtoScore("  ")
             convs.kWhtoScore("Nothing12345")
-
 
 if __name__ == '__main__':
     unittest.main()
