@@ -30,20 +30,14 @@ Rectangle {
         z: 0
         BarSeries {
             name: "BarSeries"
+            axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
             BarSet {
-                values: [slider.value.toFixed(), slider.value.toFixed()*0.5, slider.value.toFixed()*0.75]
-                label: "Set1"
+                values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
+                    slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
+                slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
+                label: "Environmental Impact Score"
             }
 
-            BarSet {
-                values: [slider.value.toFixed()*0.3, slider.value.toFixed()*0.44, slider.value.toFixed()*0.32]
-                label: "Set2"
-            }
-
-            BarSet {
-                values: [slider.value.toFixed()*0.28, slider.value.toFixed()*0.3, slider.value.toFixed()*0.1]
-                label: "Set3"
-            }
         }
     }
 
@@ -55,19 +49,10 @@ Rectangle {
         height: 242
         HorizontalBarSeries {
             name: "HorizontalBarSeries"
+            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
             BarSet {
-                values: [2, 2, 3]
-                label: "Set1"
-            }
-
-            BarSet {
-                values: [5, 1, 2]
-                label: "Set2"
-            }
-
-            BarSet {
-                values: [3, 5, 8]
-                label: "Set3"
+                values: [0.012*slider.value.toFixed(), 0.4*slider.value.toFixed()]
+                label: "Environmental Impacts"
             }
         }
     }
@@ -80,20 +65,12 @@ Rectangle {
         height: 242
         HorizontalBarSeries {
             name: "HorizontalBarSeries"
+            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
             BarSet {
-                values: [2, 2, 3]
-                label: "Set1"
+                values: [0.011*slider.value.toFixed(), 0.005*slider.value.toFixed()]
+                label: "Environmental Impacts"
             }
 
-            BarSet {
-                values: [5, 1, 2]
-                label: "Set2"
-            }
-
-            BarSet {
-                values: [3, 5, 8]
-                label: "Set3"
-            }
         }
     }
 
@@ -104,20 +81,11 @@ Rectangle {
         width: 300
         height: 242
         HorizontalBarSeries {
+            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
             name: "HorizontalBarSeries"
             BarSet {
-                values: [2, 2, 3]
-                label: "Set1"
-            }
-
-            BarSet {
-                values: [5, 1, 2]
-                label: "Set2"
-            }
-
-            BarSet {
-                values: [3, 5, 8]
-                label: "Set3"
+                values: [0.045*slider.value.toFixed(), 0.65*slider.value.toFixed()]
+                label: "Environmental Impacts"
             }
         }
     }
@@ -128,25 +96,25 @@ Rectangle {
         y: 232
         width: 303
         height: 22
-        stepSize: 0.1
+        stepSize: 0.02
         value: 0.5
 
         Connections {
             target: slider
             onClicked: console.log("clicked")
         }
-        to: 3
+        to: 5
         from: none.none
     }
 
     TextInput {
         id: textInput
-        x: 47
-        y: 173
+        x: 45
+        y: 175
         width: 295
         height: 62
-        text: qsTr("Enter Power Usage")
-        font.pixelSize: 30
+        text: qsTr("Enter Power Usage ")
+        font.pixelSize: 25
     }
 
     Rectangle {
@@ -220,11 +188,21 @@ Rectangle {
 
     Text {
         id: text3
-        x: 47
+        x: 99
         y: 268
-        width: 140
+        width: 33
         height: 57
         text: slider.value.toFixed()
+        font.pixelSize: 20
+    }
+
+    Text {
+        id: text4
+        x: 45
+        y: 268
+        width: 33
+        height: 57
+        text: "kWh:"
         font.pixelSize: 20
     }
 
@@ -232,6 +210,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}
+    D{i:0;formeditorZoom:0.66}D{i:29}
 }
 ##^##*/
