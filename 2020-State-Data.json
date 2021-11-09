@@ -1,0 +1,206 @@
+{
+    "Connecticut": {
+        "avg_consumption": 711,
+        "avg_price": 22.71
+    },
+    "Maine": {
+        "avg_consumption": 570,
+        "avg_price": 16.81
+    },
+    "Massachusetts": {
+        "avg_consumption": 602,
+        "avg_price": 21.97
+    },
+    "New Hampshire": {
+        "avg_consumption": 630,
+        "avg_price": 19.04
+    },
+    "Rhode Island": {
+        "avg_consumption": 594,
+        "avg_price": 22.01
+    },
+    "Vermont": {
+        "avg_consumption": 567,
+        "avg_price": 19.54
+    },
+    "New Jersey": {
+        "avg_consumption": 683,
+        "avg_price": 16.03
+    },
+    "New York": {
+        "avg_consumption": 602,
+        "avg_price": 18.36
+    },
+    "Pennsylvania": {
+        "avg_consumption": 846,
+        "avg_price": 13.58
+    },
+    "Illinois": {
+        "avg_consumption": 721,
+        "avg_price": 13.04
+    },
+    "Indiana": {
+        "avg_consumption": 938,
+        "avg_price": 12.83
+    },
+    "Michigan": {
+        "avg_consumption": 676,
+        "avg_price": 16.26
+    },
+    "Ohio": {
+        "avg_consumption": 873,
+        "avg_price": 12.29
+    },
+    "Wisconsin": {
+        "avg_consumption": 694,
+        "avg_price": 14.32
+    },
+    "Iowa": {
+        "avg_consumption": 865,
+        "avg_price": 12.46
+    },
+    "Kansas": {
+        "avg_consumption": 883,
+        "avg_price": 12.85
+    },
+    "Minnesota": {
+        "avg_consumption": 775,
+        "avg_price": 13.17
+    },
+    "Missouri": {
+        "avg_consumption": 1028,
+        "avg_price": 11.22
+    },
+    "Nebraska": {
+        "avg_consumption": 1013,
+        "avg_price": 10.80
+    },
+    "North Dakota": {
+        "avg_consumption": 1085,
+        "avg_price": 10.44
+    },
+    "South Dakota": {
+        "avg_consumption": 1037,
+        "avg_price": 11.75
+    },
+    "Delaware": {
+        "avg_consumption": 932,
+        "avg_price": 12.56
+    },
+    "Disctrict of Columbia": {
+        "avg_consumption": 704,
+        "avg_price": 12.63
+    },
+    "Florida": {
+        "avg_consumption": 1142,
+        "avg_price": 11.27
+    },
+    "Georgia": {
+        "avg_consumption": 1081,
+        "avg_price": 12.02
+    },
+    "Maryland": {
+        "avg_consumption": 957,
+        "avg_price": 13.01
+    },
+    "North Carolina": {
+        "avg_consumption": 1041,
+        "avg_price": 11.38
+    },
+    "South Carolina": {
+        "avg_consumption": 1081,
+        "avg_price": 12.78
+    },
+    "Virginia": {
+        "avg_consumption": 1095,
+        "avg_price": 12.03
+    },
+    "West Virginia": {
+        "avg_consumption": 1051,
+        "avg_price": 11.80
+    },
+    "Alabama": {
+        "avg_consumption": 1145,
+        "avg_price": 12.57
+    },
+    "Kentucky": {
+        "avg_consumption": 1073,
+        "avg_price": 10.87
+    },
+    "Mississippi": {
+        "avg_consumption": 1146,
+        "avg_price": 11.17
+    },
+    "Tennessee": {
+        "avg_consumption": 1168,
+        "avg_price": 10.76
+    },
+    "Arkansas": {
+        "avg_consumption": 1060,
+        "avg_price": 10.41
+    },
+    "Louisiana": {
+        "avg_consumption": 1201,
+        "avg_price": 9.67
+    },
+    "Oklahoma": {
+        "avg_consumption": 1078,
+        "avg_price": 10.12
+    },
+    "Texas": {
+        "avg_consumption": 1132,
+        "avg_price": 11.71
+    },
+    "Arizona": {
+        "avg_consumption": 1114,
+        "avg_price": 12.27
+    },
+    "Colorado": {
+        "avg_consumption": 711,
+        "avg_price": 12.36
+    },
+    "Idaho": {
+        "avg_consumption": 955,
+        "avg_price": 9.95
+    },
+    "Montana": {
+        "avg_consumption": 858,
+        "avg_price": 11.24
+    },
+    "Nevada": {
+        "avg_consumption": 973,
+        "avg_price": 11.34
+    },
+    "New Mexico": {
+        "avg_consumption": 670,
+        "avg_price": 12.94
+    },
+    "Utah": {
+        "avg_consumption": 769,
+        "avg_price": 10.44
+    },
+    "Wyoming": {
+        "avg_consumption": 869,
+        "avg_price": 11.11
+    },
+    "California": {
+        "avg_consumption": 572,
+        "avg_price": 20.45
+    },
+    "Oregon": {
+        "avg_consumption": 916,
+        "avg_price": 11.17
+    },
+    "Washington": {
+        "avg_consumption": 969,
+        "avg_price": 9.87
+    },
+    "Alaska": {
+        "avg_consumption": 552,
+        "avg_price": 22.57
+    },
+    "Hawaii": {
+        "avg_consumption": 537,
+        "avg_price": 30.28
+    }
+}
