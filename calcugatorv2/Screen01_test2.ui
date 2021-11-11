@@ -1,12 +1,11 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import calcugatorv2 1.0
 import QtCharts 2.3
-import QtQuick 2.11
-import QtQuick.Window 2.2
-import QtQuick.Controls 2.2
 
 Rectangle {
-    width: 1920
-    height: 1080
+    width: Constants.width
+    height: Constants.height
     color: "#b9f9e1"
 
     Text {
@@ -18,6 +17,7 @@ Rectangle {
         anchors.verticalCenterOffset: -262
         anchors.horizontalCenterOffset: -425
         anchors.centerIn: parent
+        font.family: Constants.font.family
     }
 
     ChartView {
@@ -30,14 +30,17 @@ Rectangle {
         z: 0
         BarSeries {
             name: "BarSeries"
-            axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
+            axisX: BarCategoryAxis {
+                categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas"]
+            }
             BarSet {
-                values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
-                    slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
-                slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
+                values: [0.145675 * slider.value.toFixed(), slider.value.toFixed(
+                        ) * 0.3475, slider.value.toFixed(
+                        ) * 0.206, 0.95991 * slider.value.toFixed(), slider.value.toFixed(
+                        ) * 0.2365, slider.value.toFixed(
+                        ) * 0.008, slider.value.toFixed() * 0.35443645]
                 label: "Environmental Impact Score"
             }
-
         }
     }
 
@@ -49,9 +52,12 @@ Rectangle {
         height: 242
         HorizontalBarSeries {
             name: "HorizontalBarSeries"
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+            axisY: BarCategoryAxis {
+                categories: ["CO2", "H20"]
+            }
             BarSet {
-                values: [0.012*slider.value.toFixed(), 0.4*slider.value.toFixed()]
+                values: [0.012 * slider.value.toFixed(
+                        ), 0.4 * slider.value.toFixed()]
                 label: "Environmental Impacts"
             }
         }
@@ -65,12 +71,14 @@ Rectangle {
         height: 242
         HorizontalBarSeries {
             name: "HorizontalBarSeries"
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+            axisY: BarCategoryAxis {
+                categories: ["CO2", "H20"]
+            }
             BarSet {
-                values: [0.011*slider.value.toFixed(), 0.005*slider.value.toFixed()]
+                values: [0.011 * slider.value.toFixed(
+                        ), 0.005 * slider.value.toFixed()]
                 label: "Environmental Impacts"
             }
-
         }
     }
 
@@ -81,10 +89,13 @@ Rectangle {
         width: 300
         height: 242
         HorizontalBarSeries {
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+            axisY: BarCategoryAxis {
+                categories: ["CO2", "H20"]
+            }
             name: "HorizontalBarSeries"
             BarSet {
-                values: [0.045*slider.value.toFixed(), 0.65*slider.value.toFixed()]
+                values: [0.045 * slider.value.toFixed(
+                        ), 0.65 * slider.value.toFixed()]
                 label: "Environmental Impacts"
             }
         }
@@ -101,13 +112,12 @@ Rectangle {
 
         Connections {
             target: slider
-            onMoved: console.log("clicked")
         }
         to: 5
-        from: none.none
+        from: 1
     }
 
-    Text {
+    TextInput {
         id: textInput
         x: 45
         y: 175
@@ -150,7 +160,6 @@ Rectangle {
             text: qsTr("About CalcuGator")
             font.pixelSize: 35
         }
-
     }
 
     ComboBox {
@@ -205,5 +214,12 @@ Rectangle {
         text: "kWh:"
         font.pixelSize: 20
     }
-
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}D{i:1}D{i:3}D{i:2}D{i:7}D{i:6}D{i:11}D{i:10}D{i:15}D{i:14}
+D{i:19}D{i:18}D{i:20}D{i:21}D{i:23}D{i:24}D{i:22}D{i:25}D{i:26}D{i:27}D{i:28}D{i:29}
+}
+##^##*/
+

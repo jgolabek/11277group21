@@ -119,52 +119,70 @@ ApplicationWindow {
         font.pixelSize: 25
     }
 
-    Rectangle {
-        id: rectangle1
+  
+
+    
+
+        
+    TextField {
+        id: "zipcode"
         x: 39
-        y: 409
-        width: 303
-        height: 64
-        color: "#f9d185"
+        y: 300
+        width: 300
+        height: 50
+        placeholderText: qsTr("Enter Zipcode")
     }
 
     Rectangle {
         id: rectangle
         x: 39
-        y: 331
-        width: 303
-        height: 64
-        color: "#f9d185"
+        y: 400
+        width: 300
+        height: 250
+        color: "transparent"
 
-        Text {
-            id: text2
-            x: 109
-            y: 88
-            width: 85
-            text: qsTr("Team")
-            font.pixelSize: 35
+        Rectangle {
+            x: 0
+            y: 0
+            width: 300
+            height: 50
+            color: "darkorange"
+            Text {
+                anchors.centerIn: parent
+                x: 0
+                y: 0
+                width: 85
+                text: qsTr("Team")
+                font.pixelSize: 35
+            }           
         }
 
-        Text {
-            id: text1
-            x: 17
-            y: 11
-            text: qsTr("About CalcuGator")
-            font.pixelSize: 35
-        }
+        Rectangle {
+            x: 0
+            y: 60
+            width: 300
+            height: 50
+            color: "darkorange"
+            Text {
+                x: 0
+                y: 0
+                width: 85
+                text: qsTr("About CalcuGator")
+                font.pixelSize: 35
+            }           
+        }        
 
         Button {
             objectName: "resetButton"
            id: reset
             x: 0
-            y: 155
-            width: 303
-            height: 64
+            y: 120
+            width: 300
+            height: 50
             text: "Reset"
             font.pixelSize: 35
             onClicked: reset.text = "true"
         }
-        
 
     }
 
