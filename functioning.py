@@ -8,18 +8,21 @@ from functools import partial
 import random
 
 def interact():
+    #defines user interactions 
     reset_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "resetButton")
     error_text = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "errorText")
     calculate_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "calculateButton")
     slider = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "slider")
     zipcode = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "zipcode")
 
+    #reset all fields when reset button is pressed
     if reset_button.property("text") == "true":
         slider.setProperty("value", 0)
         zipcode.setProperty("text", "")
         error_text.setProperty("text", "")
         reset_button.setProperty("text", "Reset")
 
+    #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":
         error_message = ""
         inputZipcode = zipcode.property("text")
@@ -44,7 +47,7 @@ if __name__ == '__main__':
     if not engine.rootObjects():
         sys.exit(-1)
 
-    reset_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "resetButton")
+    #calls a timer that calls the interact function at the set interval
     timer = PyQt5.QtCore.QTimer(interval=5)
     timer.timeout.connect(partial(interact))
     timer.start()
