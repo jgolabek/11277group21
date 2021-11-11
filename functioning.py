@@ -7,11 +7,32 @@ import PyQt5.QtWidgets
 from functools import partial
 import random
 
-def reset(reset_button):
+def interact():
+    reset_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "resetButton")
+    error_text = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "errorText")
+    calculate_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "calculateButton")
     slider = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "slider")
+    zipcode = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "zipcode")
+
     if reset_button.property("text") == "true":
         slider.setProperty("value", 0)
+        zipcode.setProperty("text", "")
+        error_text.setProperty("text", "")
         reset_button.setProperty("text", "Reset")
+
+    if calculate_button.property("text") == "true":
+        error_message = ""
+        inputZipcode = zipcode.property("text")
+        if len(inputZipcode) == 0:
+            error_message = "Error: Please input a valid zipcode"
+        elif len(inputZipcode) > 5:
+           error_message = "Error: Please input a valid zipcode"
+        try:
+            int(inputZipcode)
+        except:
+            error_message = "Error: Please input a valid zipcode"
+        error_text.setProperty("text", error_message)
+        calculate_button.setProperty("text", "Calculate")
 
 if __name__ == '__main__':
     os.environ['QT_QUICK_CONTROLS_STYLE'] = 'Default'
@@ -25,7 +46,7 @@ if __name__ == '__main__':
 
     reset_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "resetButton")
     timer = PyQt5.QtCore.QTimer(interval=5)
-    timer.timeout.connect(partial(reset, reset_button))
+    timer.timeout.connect(partial(interact))
     timer.start()
 
     sys.exit(app.exec_())

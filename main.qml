@@ -92,51 +92,100 @@ ApplicationWindow {
         }
     }
 
-    Slider {
-        id: slider
-        x: 39
-        y: 232
-        width: 303
-        height: 22
-        stepSize: 0.02
-        value: 0.5
-        objectName: "slider"
-        Connections {
-            target: slider
-            onMoved: console.log("clicked")
+
+
+    Rectangle {
+        x: 50
+        y: 250
+        width: 300
+        height: 250
+        color: "transparent"
+
+        Text {
+            x: 0
+            y: 0
+            width: 300
+            height: 50
+            text: qsTr("Enter Power Usage ")
+            font.pixelSize: 25
         }
-        to: 5
-        from: 0
-    }
+           
+        Slider {
+            id: slider
+            x: 0
+            y: 55
+            width: 300
+            height: 25
+            stepSize: 0.02
+            value: 0.5
+            objectName: "slider"
+            Connections {
+                target: slider
+            }
+            to: 5
+            from: 0
+        }
 
-    Text {
-        id: textInput
-        x: 45
-        y: 175
-        width: 295
-        height: 62
-        text: qsTr("Enter Power Usage ")
-        font.pixelSize: 25
-    }
+        Text {
+            id: text4
+            x: 0
+            y: 85
+            width: 50
+            height: 50
+            text: "kWh: " + slider.value.toFixed()
+            font.pixelSize: 20
+        }
+            
+        TextField {
+            objectName: "zipcode"
+            x: 0
+            y: 120
+            width: 300
+            height: 50
+            placeholderText: qsTr("Enter Zipcode")
+        }
 
-  
+        Text {
+            objectName: "errorText"
+            x: 0
+            y: 170
+            width: 300
+            height: 20
+            text: ""
+            font.pixelSize: 18
+        }
+
+        Button {
+            objectName: "calculateButton"
+            id: calculate
+            x: 0
+            y: 200
+            width: 300
+            height: 50
+            text: "Calculate"
+            font.pixelSize: 35
+            onClicked: calculate.text = "true"
+            }
+
+            
+        Button {
+            objectName: "resetButton"
+            id: reset
+            x: 0
+            y: 260
+            width: 300
+            height: 50
+            text: "Reset"
+            font.pixelSize: 35
+            onClicked: reset.text = "true"
+        }
+    }
 
     
 
-        
-    TextField {
-        id: "zipcode"
-        x: 39
-        y: 300
-        width: 300
-        height: 50
-        placeholderText: qsTr("Enter Zipcode")
-    }
-
     Rectangle {
-        id: rectangle
-        x: 39
-        y: 400
+        x: 50
+        y: 600
         width: 300
         height: 250
         color: "transparent"
@@ -164,26 +213,13 @@ ApplicationWindow {
             height: 50
             color: "darkorange"
             Text {
-                x: 0
+                x: 15
                 y: 0
                 width: 85
                 text: qsTr("About CalcuGator")
                 font.pixelSize: 35
             }           
-        }        
-
-        Button {
-            objectName: "resetButton"
-           id: reset
-            x: 0
-            y: 120
-            width: 300
-            height: 50
-            text: "Reset"
-            font.pixelSize: 35
-            onClicked: reset.text = "true"
-        }
-
+        }       
     }
 
     ComboBox {
@@ -219,25 +255,9 @@ ApplicationWindow {
         currentIndex: 1
     }
 
-    Text {
-        id: text3
-        x: 99
-        y: 268
-        width: 33
-        height: 57
-        text: slider.value.toFixed()
-        font.pixelSize: 20
-    }
+    
 
-    Text {
-        id: text4
-        x: 45
-        y: 268
-        width: 33
-        height: 57
-        text: "kWh:"
-        font.pixelSize: 20
-    }
+   
 
     Rectangle {
         id: rectangle12
