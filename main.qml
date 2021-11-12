@@ -6,10 +6,11 @@ import QtCharts 2.3
 
 ApplicationWindow {
     visible: true
-    width: 1920
+    width: 2000
     height: 1080
     color: "#b9f9e1"
-
+    property var image_size: 250
+    property var background_color: "#b9f9e1"
     Text {
         x: 50
         y: 60
@@ -277,35 +278,35 @@ ApplicationWindow {
         height: 250
         color: "transparent"
 
-        Rectangle {
+        Button {
+            objectName: "teamButton"
+            id: teamButton
             x: 0
             y: 0
             width: 300
             height: 50
-            color: "darkorange"
-            Text {
-                anchors.centerIn: parent
-                x: 0
-                y: 0
-                width: 85
-                text: qsTr("Team")
-                font.pixelSize: 35
+            text: "Team"
+            font.pixelSize: 35
+            onClicked: teamButton.text = "true"
+            palette  {
+                button: "darkorange"
             }
         }
 
-        Rectangle {
+        Button {
+            objectName: "aboutCalcugatorButton"
+            id: aboutCalcugatorButton
             x: 0
             y: 60
             width: 300
             height: 50
-            color: "darkorange"
-            Text {
-                x: 15
-                y: 0
-                width: 85
-                text: qsTr("About CalcuGator")
-                font.pixelSize: 35
+            font.pixelSize: 35
+             text: "About CalcuGator"
+            onClicked: aboutCalcugatorButton.text = "true"
+            palette  {
+                button: "darkorange"
             }
+
         }
     }
 
@@ -321,12 +322,96 @@ ApplicationWindow {
     }
 
     Rectangle{
-        objectName: "aboutTeamDialog"
+        objectName: "teamDialog"
         visible: false
         x: 400
         y: 25
-        width: 1000
-        height: 750
-        color: "crimson"	
+        width: parent.width - 400 - 50
+        height: parent.height - 25 - 50 - 50
+        color: background_color
+
+        Rectangle{
+            y:0
+            id: joesRectangle
+            Image{
+                x: 25
+                y:25
+
+                source: "images/joe_scaled.jpg"
+            }	
+            Text{
+                x: image_size + 50
+                y: 50
+                text: "Joe is a cool guy"
+            }
+        }
+
+        Rectangle{
+            y:500
+            id: thomasRectangle
+            Image{
+                x: 25
+                y:  25
+
+                source: "images/thomas_scaled.jpg"
+            }	
+            Text{
+                x: image_size + 50
+                y: 50
+                text: "Thomas is a cool guy"
+            }
+        }
+
+        Rectangle{
+            x:750
+            y:0
+            id: kevinRectangle
+            Image{
+                x: 25
+                y:  25
+
+                source: "images/kevin_scaled.jpg"
+            }	
+            Text{
+                x: image_size + 50
+                y: 50
+                text: "Kevin is a cool guy"
+            }
+        }
+
+        Rectangle{
+            x:750
+            y:500
+            id: justinRectangle
+            Image{
+                x: 25
+                y:  25
+
+                source: "images/justin_scaled.jpg"
+            }	
+            Text{
+                x: image_size + 50
+                y: 50
+                text: "Justin is a cool guy"
+            }
+        }
+
     }
+
+    Rectangle{
+        objectName: "aboutCalcugatorDialog"
+        visible: false
+        x: 400
+        y: 25
+        width: parent.width - 400 - 50
+        height: parent.height - 25 - 50 - 50
+        color: background_color
+        Text{
+            x:25
+            y:25
+            text: "Something something powerful computational engine"
+        }
+    }
+
+    
 }

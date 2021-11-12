@@ -30,7 +30,12 @@ def file_save(zip, slider):
         return 1
     except:
             return 0
-        
+
+def display_dialog(dialog):
+    if dialog.property("visible") == False:
+        dialog.setProperty("visible", "true")
+    else:
+        dialog.setProperty("visible", "false")
 
 
 def file_load():
@@ -69,6 +74,10 @@ def interact():
     zipcode = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "zipcode")
     load_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "loadButton")
     scores = engine.rootObjects()[0].findChild(PyQt5.QtQuick.QQuickItem, "scoreChart")
+    team_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "teamButton")
+    team_dialog = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "teamDialog")
+    about_calcugator_button = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "aboutCalcugatorButton")
+    about_calcugator_dialog = engine.rootObjects()[0].findChild(PyQt5.QtCore.QObject, "aboutCalcugatorDialog")
 
     #reset all fields when reset button is pressed
     if reset_button.property("text") == "true":
@@ -88,11 +97,23 @@ def interact():
     if load_button.property("text") == "true":
         load_button.setProperty("text", "Load")
         data = file_load()
-        slider.setProperty("value", data['slider'])
-        zipcode.setProperty("text", int(data['zipcode']))
+        try:
+            slider.setProperty("value", data['slider'])
+            zipcode.setProperty("text", int(data['zipcode']))
+        except:
+            print()
         calculate_button.setProperty("text", "true")
         
 
+    if team_button.property("text") == "true":
+        about_calcugator_dialog.setProperty("visible", "false")
+        display_dialog(team_dialog)
+        team_button.setProperty("text", "Team")
+    
+    if about_calcugator_button.property("text") == "true":
+        team_dialog.setProperty("visible", "false")
+        display_dialog(about_calcugator_dialog)
+        about_calcugator_button.setProperty("text", "About CalcuGator")
 
     #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":
