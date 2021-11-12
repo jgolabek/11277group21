@@ -1,1 +1,1 @@
-{"slider": "4.8", "zipcode": "32603"}
+{"slider": "0.5", "zipcode": "32403"}

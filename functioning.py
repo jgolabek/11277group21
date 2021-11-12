@@ -21,17 +21,26 @@ def verify_zip(zipcode):
         error_message = "Error: Please input a valid zipcode"
     return error_message    
 def file_save(zip, slider):
-    name, _ = QFileDialog.getSaveFileName()
-    file = open(name,'w')
-    text = f'{{\"slider\": \"{slider}\", \"zipcode\": \"{zip}\"}}'
-    file.write(text)
-    file.close()
+    try:
+        name, _ = QFileDialog.getSaveFileName()
+        file = open(name,'w')
+        text = f'{{\"slider\": \"{slider}\", \"zipcode\": \"{zip}\"}}'
+        file.write(text)
+        file.close()
+        return 1
+    except:
+            return 0
+        
+
 
 def file_load():
-    name, _ = QFileDialog.getOpenFileName()
-    with open(name) as f:
-        data = json.load(f)
-    return data
+    try:
+        name, _ = QFileDialog.getOpenFileName()
+        with open(name) as f:
+            data = json.load(f)
+        return data
+    except:
+        return
 import PyQt5.QtChart
 import PyQt5.QtQuick
 from functools import partial
@@ -67,11 +76,14 @@ def interact():
         zipcode.setProperty("text", "")
         error_text.setProperty("text", "")
         reset_button.setProperty("text", "Reset")
-
+        
     #reset all fields when reset button is pressed
     if save_button.property("text") == "true":
         save_button.setProperty("text", "Save")
-        file_save(zipcode.property("text"), slider.property("value"))
+        error_message = verify_zip(zipcode.property("text"))
+        if error_message == "":
+            file_save(zipcode.property("text"), slider.property("value"))
+        error_text.setProperty("text", error_message)
     
     if load_button.property("text") == "true":
         load_button.setProperty("text", "Load")
@@ -85,8 +97,11 @@ def interact():
     #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":
         error_text.setProperty("text", verify_zip(zipcode.property("text")))
-        calculate_button.setProperty("text", "Calculate")
+        if verify_zip(zipcode.property("text")) == "":
         #actually calculate stuff here
+            print()
+
+        calculate_button.setProperty("text", "Calculate")
 
         #Update the KwH value and emit signals to update graphs
         bridge._kWh = round(slider.property("value"))

@@ -9,96 +9,146 @@ ApplicationWindow {
     width: 1920
     height: 1080
     color: "#b9f9e1"
+
     Text {
-        x:1
-        y:1
+        x: 50
+        y: 60
+
         id: calcugator
         width: 369
         height: 90
         text: qsTr("CalcuGator")
-        font.pointSize: 49
-        anchors.verticalCenterOffset: -262
-        anchors.horizontalCenterOffset: -425
-        anchors.centerIn: parent
+        font.pointSize: 30
     }
 
-    ChartView {
-        objectName: "scoreChart"
-        id: bar
-        x: 376
-        y: 34
-        width: 889
-        height: 335
-        layer.samples: 2
-        z: 0
-        BarSeries {
-            id: scoreBars
-            objectName: "scoreBars"
-            axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
-            BarSet {
-                //values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
-                    //slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
-                //slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
-                values: [0, 1, 2, 3, 4, 5, 6]
-                label: "Environmental Impact Score"
-            }
+    Rectangle{
+        x: 400
+        y: 50
+        color: "transparent"
+        
+        ChartView {
+            objectName: "scoreChart"
+            id: bar
+            x: 0
+            y: 0
+            width: 1525
+            height: 400
+            layer.samples: 2
+            z: 0
+            BarSeries {
+                id: scoreBars
+                objectName: "scoreBars"
+                axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
+                BarSet {
+                    //values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
+                        //slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
+                    //slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
+                    values: [0, 1, 2, 3, 4, 5, 6]
+                    label: "Environmental Impact Score"
+                }
 
-            Connections {
-              target: bridge
-              onUpdateScore: {
-                scoreBars.clear()
-                var scores = bridge.getScores()
-                scoreBars.append("Environmental Impact Score", scores)
-              }
-            }
-        }
-    }
-
-    ChartView {
-        id: hBar
-        x: 376
-        y: 437
-        width: 300
-        height: 242
-        HorizontalBarSeries {
-            name: "HorizontalBarSeries"
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
-            BarSet {
-                values: [0.012*slider.value.toFixed(), 0.4*slider.value.toFixed()]
-                label: "Environmental Impacts"
+                Connections {
+                target: bridge
+                onUpdateScore: {
+                    scoreBars.clear()
+                    var scores = bridge.getScores()
+                    scoreBars.append("Environmental Impact Score", scores)
+                }
+                }
             }
         }
-    }
 
-    ChartView {
-        id: hBar1
-        x: 671
-        y: 437
-        width: 300
-        height: 242
-        HorizontalBarSeries {
-            name: "HorizontalBarSeries"
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
-            BarSet {
-                values: [0.011*slider.value.toFixed(), 0.005*slider.value.toFixed()]
-                label: "Environmental Impacts"
+        Rectangle{
+            x:0
+            y:425
+            color: "transparent"
+
+            ComboBox {
+                x: 13
+                y: 0
+                width: 225
+                height: 45
+                font.pointSize: 20
+                displayText: "Nuclear"
             }
 
+            ChartView {
+                id: hBar
+                x: 0
+                y: 40
+                width: 475
+                height: 300
+                HorizontalBarSeries {
+                    name: "HorizontalBarSeries"
+                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+                    BarSet {
+                        values: [0.012*slider.value.toFixed(), 0.4*slider.value.toFixed()]
+                        label: "Environmental Impacts"
+                    }
+                }
+            }
         }
-    }
 
-    ChartView {
-        id: hBar2
-        x: 965
-        y: 437
-        width: 300
-        height: 242
-        HorizontalBarSeries {
-            axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
-            name: "HorizontalBarSeries"
-            BarSet {
-                values: [0.045*slider.value.toFixed(), 0.65*slider.value.toFixed()]
-                label: "Environmental Impacts"
+        Rectangle{
+            x:525
+            y:425
+            color: "transparent"
+
+            ComboBox {
+                x: 13
+                y: 0
+                width: 225
+                height: 45
+                font.pointSize: 20
+                displayText: "Wind"
+            }
+
+            ChartView {
+                id: hBar1
+                x: 0
+                y: 40
+                width: 475
+                height: 300
+                HorizontalBarSeries {
+                    name: "HorizontalBarSeries"
+                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+                    BarSet {
+                        values: [0.011*slider.value.toFixed(), 0.005*slider.value.toFixed()]
+                        label: "Environmental Impacts"
+                    }
+
+                }
+            }
+        }
+        
+        Rectangle{
+            x:1050
+            y:425
+            color: "transparent"
+
+            ComboBox {
+                x: 13
+                y: 0
+                width: 225
+                height: 45
+                font.pointSize: 20
+                displayText: "Solar"
+            }
+
+            ChartView {
+                id: hBar2
+                x: 0
+                y: 40
+                width: 475
+                height: 300
+                HorizontalBarSeries {
+                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+                    name: "HorizontalBarSeries"
+                    BarSet {
+                        values: [0.045*slider.value.toFixed(), 0.65*slider.value.toFixed()]
+                        label: "Environmental Impacts"
+                    }
+                }
             }
         }
     }
@@ -259,38 +309,6 @@ ApplicationWindow {
         }
     }
 
-    ComboBox {
-        id: comboBox
-        x: 386
-        y: 386
-        width: 225
-        height: 45
-        wheelEnabled: false
-        focusPolicy: Qt.WheelFocus
-        font.pointSize: 20
-        displayText: "Nuclear"
-    }
-
-    ComboBox {
-        id: comboBox1
-        x: 683
-        y: 386
-        width: 225
-        height: 45
-        font.pointSize: 20
-        displayText: "Wind"
-    }
-
-    ComboBox {
-        id: comboBox2
-        x: 976
-        y: 386
-        width: 225
-        height: 45
-        font.pointSize: 20
-        displayText: "Solar"
-        currentIndex: 1
-    }
 
     Rectangle {
         id: rectangle12
@@ -300,5 +318,15 @@ ApplicationWindow {
         height: r_manager.height
         color: "blue"
         objectName: "foo_object"
+    }
+
+    Rectangle{
+        objectName: "aboutTeamDialog"
+        visible: false
+        x: 400
+        y: 25
+        width: 1000
+        height: 750
+        color: "crimson"	
     }
 }
