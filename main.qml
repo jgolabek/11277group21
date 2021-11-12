@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2
 import QtCharts 2.3
 
 
-ApplicationWindow {    
+ApplicationWindow {
     visible: true
     width: 1920
     height: 1080
@@ -23,6 +23,7 @@ ApplicationWindow {
     }
 
     ChartView {
+        objectName: "scoreChart"
         id: bar
         x: 376
         y: 34
@@ -31,15 +32,25 @@ ApplicationWindow {
         layer.samples: 2
         z: 0
         BarSeries {
-            name: "BarSeries"
+            id: scoreBars
+            objectName: "scoreBars"
             axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
             BarSet {
-                values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
-                    slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
-                slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
+                //values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
+                    //slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
+                //slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
+                values: [0, 1, 2, 3, 4, 5, 6]
                 label: "Environmental Impact Score"
             }
 
+            Connections {
+              target: bridge
+              onUpdateScore: {
+                scoreBars.clear()
+                var scores = bridge.getScores()
+                scoreBars.append("Environmental Impact Score", scores)
+              }
+            }
         }
     }
 
@@ -109,7 +120,7 @@ ApplicationWindow {
             text: qsTr("Enter Power Usage ")
             font.pixelSize: 25
         }
-           
+
         Slider {
             id: slider
             x: 0
@@ -135,7 +146,7 @@ ApplicationWindow {
             text: "kWh: " + slider.value.toFixed()
             font.pixelSize: 20
         }
-            
+
         TextField {
             objectName: "zipcode"
             x: 0
@@ -167,7 +178,7 @@ ApplicationWindow {
             onClicked: calculate.text = "true"
             }
 
-            
+
         Button {
             objectName: "resetButton"
             id: reset
@@ -207,7 +218,7 @@ ApplicationWindow {
         
     }
 
-    
+
 
     Rectangle {
         x: 50
@@ -229,7 +240,7 @@ ApplicationWindow {
                 width: 85
                 text: qsTr("Team")
                 font.pixelSize: 35
-            }           
+            }
         }
 
         Rectangle {
@@ -244,8 +255,8 @@ ApplicationWindow {
                 width: 85
                 text: qsTr("About CalcuGator")
                 font.pixelSize: 35
-            }           
-        }       
+            }
+        }
     }
 
     ComboBox {
@@ -281,10 +292,6 @@ ApplicationWindow {
         currentIndex: 1
     }
 
-    
-
-   
-
     Rectangle {
         id: rectangle12
         x: 187
@@ -293,7 +300,5 @@ ApplicationWindow {
         height: r_manager.height
         color: "blue"
         objectName: "foo_object"
-
     }
-
 }
