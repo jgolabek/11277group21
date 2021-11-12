@@ -179,13 +179,39 @@ ApplicationWindow {
             font.pixelSize: 35
             onClicked: reset.text = "true"
         }
+
+        Button {
+            objectName: "saveButton"
+            id: saveButton
+            x: 0
+            y: 320
+            width: 300
+            height: 50
+            text: "Save"
+            font.pixelSize: 35
+            onClicked: saveButton.text = "true"
+        }
+
+        Button {
+            objectName: "loadButton"
+            id: loadButton
+            x: 0
+            y: 380
+            width: 300
+            height: 50
+            text: "Load"
+            font.pixelSize: 35
+            onClicked: loadButton.text = "true"
+        }
+
+        
     }
 
     
 
     Rectangle {
         x: 50
-        y: 600
+        y: 700
         width: 300
         height: 250
         color: "transparent"
