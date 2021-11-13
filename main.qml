@@ -22,11 +22,12 @@ ApplicationWindow {
         font.pointSize: 30
     }
 
+    //Top Graph
     Rectangle{
         x: 400
         y: 50
         color: "transparent"
-        
+
         ChartView {
             objectName: "scoreChart"
             id: bar
@@ -38,117 +39,194 @@ ApplicationWindow {
             z: 0
             BarSeries {
                 id: scoreBars
-                objectName: "scoreBars"
                 axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
+                axisY: ValueAxis {
+                    id: valueAxisScore
+                    max: 1000
+                }
                 BarSet {
-                    //values: [0.145675*slider.value.toFixed(), slider.value.toFixed()*0.3475,
-                        //slider.value.toFixed()*0.206, 0.95991*slider.value.toFixed(), slider.value.toFixed()*0.2365,
-                    //slider.value.toFixed()*0.008, slider.value.toFixed()*0.35443645]
-                    values: [0, 1, 2, 3, 4, 5, 6]
+                    values: [0, 0, 0, 0, 0, 0, 0]
                     label: "Environmental Impact Score"
                 }
 
                 Connections {
-                target: bridge
-                onUpdateScore: {
-                    scoreBars.clear()
-                    var scores = bridge.getScores()
-                    scoreBars.append("Environmental Impact Score", scores)
-                }
+                    target: bridge
+                    onUpdateScore: {
+                        scoreBars.clear()
+                        var scores = bridge.getScores()
+                        scoreBars.append("Environmental Impact Score", scores)
+                    }
                 }
             }
         }
 
+        //Left Bottom Graph
         Rectangle{
             x:0
             y:425
             color: "transparent"
 
             ComboBox {
+                id: leftChoice
                 x: 13
                 y: 0
                 width: 225
                 height: 45
                 font.pointSize: 20
-                displayText: "Nuclear"
+                model: ["Nuclear", "Coal", "Natural Gas"]
+
+                Connections {
+                    target: leftChoice
+                    onActivated: {
+                        leftHBar.clear()
+                        var impact = bridge.getIndImpact(leftChoice.currentText)
+                        leftHBar.append("Environmental Impacts", impact)
+                    }
+                }
             }
 
             ChartView {
-                id: hBar
+                id: leftChartView
                 x: 0
                 y: 40
                 width: 475
                 height: 300
                 HorizontalBarSeries {
-                    name: "HorizontalBarSeries"
-                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+                    id: leftHBar
+                    axisX: ValueAxis {
+                        id: valueAxisLeft
+                        max: 500
+                    }
+                    axisY: BarCategoryAxis {
+                        categories: ["CO2", "H20" , "S20", "Acres"]
+                    }
                     BarSet {
-                        values: [0.012*slider.value.toFixed(), 0.4*slider.value.toFixed()]
+                        values: [0, 0, 0, 0]
                         label: "Environmental Impacts"
                     }
                 }
             }
+
+            Connections {
+                target: bridge
+                onUpdateScore: {
+                    leftHBar.clear()
+                    var impact = bridge.getIndImpact(leftChoice.currentText)
+                    leftHBar.append("Environmental Impacts", impact)
+                }
+            }
         }
 
+        //Center Bottom Graph
         Rectangle{
             x:525
             y:425
             color: "transparent"
 
             ComboBox {
+                id: centChoice
                 x: 13
                 y: 0
                 width: 225
                 height: 45
                 font.pointSize: 20
-                displayText: "Wind"
+                model: ["Wind", "Hydroelectric"]
+
+                Connections {
+                    target: centChoice
+                    onActivated: {
+                        centHBar.clear()
+                        var impact = bridge.getIndImpact(centChoice.currentText)
+                        centHBar.append("Environmental Impacts", impact)
+                    }
+                }
             }
 
             ChartView {
-                id: hBar1
+                id: centChartView
                 x: 0
                 y: 40
                 width: 475
                 height: 300
                 HorizontalBarSeries {
-                    name: "HorizontalBarSeries"
-                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
+                    id: centHBar
+                    axisX: ValueAxis {
+                        id: valueAxisCent
+                        max: 500
+                    }
+                    axisY: BarCategoryAxis {
+                        categories: ["CO2", "H20" , "S20", "Acres"]
+                    }
                     BarSet {
-                        values: [0.011*slider.value.toFixed(), 0.005*slider.value.toFixed()]
+                        values: [0, 0, 0, 0]
                         label: "Environmental Impacts"
                     }
+                }
+            }
 
+            Connections {
+                target: bridge
+                onUpdateScore: {
+                    centHBar.clear()
+                    var impact = bridge.getIndImpact(centChoice.currentText)
+                    centHBar.append("Environmental Impacts", impact)
                 }
             }
         }
-        
+
+        //Right Bottom Graph
         Rectangle{
             x:1050
             y:425
             color: "transparent"
 
             ComboBox {
+                id: rightChoice
                 x: 13
                 y: 0
                 width: 225
                 height: 45
                 font.pointSize: 20
-                displayText: "Solar"
+                model: ["Solar", "Gasoline"]
+
+                Connections {
+                    target: rightChoice
+                    onActivated: {
+                        rightHBar.clear()
+                        var impact = bridge.getIndImpact(rightChoice.currentText)
+                        rightHBar.append("Environmental Impacts", impact)
+                    }
+                }
             }
 
             ChartView {
-                id: hBar2
+                id: rightChartView
                 x: 0
                 y: 40
                 width: 475
                 height: 300
                 HorizontalBarSeries {
-                    axisY: BarCategoryAxis { categories: ["CO2", "H20" ] }
-                    name: "HorizontalBarSeries"
+                    id: rightHBar
+                    axisX: ValueAxis {
+                        id: valueAxisRight
+                        max: 500
+                    }
+                    axisY: BarCategoryAxis {
+                        categories: ["CO2", "H20" , "S20", "Acres"]
+                    }
                     BarSet {
-                        values: [0.045*slider.value.toFixed(), 0.65*slider.value.toFixed()]
+                        values: [0, 0, 0, 0]
                         label: "Environmental Impacts"
                     }
+                }
+            }
+
+            Connections {
+                target: bridge
+                onUpdateScore: {
+                    rightHBar.clear()
+                    var impact = bridge.getIndImpact(rightChoice.currentText)
+                    rightHBar.append("Environmental Impacts", impact)
                 }
             }
         }
@@ -179,12 +257,13 @@ ApplicationWindow {
             width: 300
             height: 25
             stepSize: 0.02
-            value: 0.5
+            value: 1000
             objectName: "slider"
             Connections {
                 target: slider
+                onMoved: bridge.callUpdate(slider.value)
             }
-            to: 5
+            to: 2000
             from: 0
         }
 
@@ -266,7 +345,7 @@ ApplicationWindow {
             onClicked: loadButton.text = "true"
         }
 
-        
+
     }
 
 
@@ -338,7 +417,7 @@ ApplicationWindow {
                 y:25
 
                 source: "images/joe_scaled.jpg"
-            }	
+            }
             Text{
                 x: image_size + 50
                 y: 50
@@ -354,7 +433,7 @@ ApplicationWindow {
                 y:  25
 
                 source: "images/thomas_scaled.jpg"
-            }	
+            }
             Text{
                 x: image_size + 50
                 y: 50
@@ -371,7 +450,7 @@ ApplicationWindow {
                 y:  25
 
                 source: "images/kevin_scaled.jpg"
-            }	
+            }
             Text{
                 x: image_size + 50
                 y: 50
@@ -388,7 +467,7 @@ ApplicationWindow {
                 y:  25
 
                 source: "images/justin_scaled.jpg"
-            }	
+            }
             Text{
                 x: image_size + 50
                 y: 50
@@ -413,5 +492,5 @@ ApplicationWindow {
         }
     }
 
-    
+
 }
