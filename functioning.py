@@ -41,7 +41,7 @@ class Bridge(PyQt5.QtCore.QObject):
         impact[2] = convs.kWhtoSO2(self._kWh)[source]
         impact[3] = convs.kWhtoAcres(self._kWh)[source]
         return impact
-    
+
     @PyQt5.QtCore.pyqtSlot(float)
     def callCalculate(self):
         self.calculate.emit()
@@ -134,12 +134,12 @@ def interact():
     if team_button.property("text") == "true":
         about_calcugator_dialog.setProperty("visible", "false")
         display_dialog(team_dialog)
-        team_button.setProperty("text", "Team")
+        team_button.setProperty("text", "The Team")
 
     if about_calcugator_button.property("text") == "true":
         team_dialog.setProperty("visible", "false")
         display_dialog(about_calcugator_dialog)
-        about_calcugator_button.setProperty("text", "About CalcuGator")
+        about_calcugator_button.setProperty("text", "About This")
 
     #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":

@@ -6,25 +6,49 @@ import QtCharts 2.3
 
 ApplicationWindow {
     visible: true
-    width: 2000
-    height: 1080
-    color: "#b9f9e1"
+    width: 1830
+    height: 850
+    color: "#151515"
     property var image_size: 250
-    property var background_color: "#b9f9e1"
+    property var background_color: "#151515"
+
+    Rectangle {
+        id: rectangle2
+        x: 15
+        y: 36
+        width: 382
+        height: 158
+        color: "#3f3a3a"
+        radius: 10
+    }
+
+    Image {
+        id: image
+        x: -14
+        y: -9
+        width: 220
+        height: 197
+        source: "images/logo.png"
+        fillMode: Image.PreserveAspectFit
+    }
+
     Text {
-        x: 50
-        y: 60
+        x: 40
+        y: 135
 
         id: calcugator
         width: 369
         height: 90
+        color: "#ffffff"
+        font.family: "LEMON MILK"
         text: qsTr("CalcuGator")
         font.pointSize: 30
     }
 
+    //Bills Text
     Rectangle {
         x: 50
-        y: 175
+        y: 385
         width: 100
         height: 100
         color: "transparent"
@@ -35,7 +59,9 @@ ApplicationWindow {
             y: 0
             width: 100
             height: 50
-            text: qsTr("Monthly Bill: " + "$0.0")
+            font.family: "LEMON MILK"
+            color: "#ffffff"
+            text: qsTr("Monthly Bill: " + "$0.00")
             font.pixelSize: 20
         }
         Label {
@@ -44,7 +70,9 @@ ApplicationWindow {
             y: 25
             width: 100
             height: 50
-            text: qsTr("State Avg Monthly Bill: " + "$0.0")
+            font.family: "LEMON MILK"
+            color: "#ffffff"
+            text: qsTr("State Avg Monthly Bill: " + "$0.00")
             font.pixelSize: 20
         }
         Connections {
@@ -59,8 +87,8 @@ ApplicationWindow {
 
     //Top Graph
     Rectangle{
-        x: 400
-        y: 50
+        x: 410
+        y: 30
         color: "transparent"
 
         ChartView {
@@ -68,7 +96,9 @@ ApplicationWindow {
             id: bar
             x: 0
             y: 0
-            width: 1525
+            backgroundColor: '#3f3a3a'
+            theme: ChartView.ChartThemeBlueCerulean
+            width: 1375
             height: 400
             layer.samples: 2
             z: 0
@@ -107,6 +137,7 @@ ApplicationWindow {
                 y: 0
                 width: 225
                 height: 45
+                font.family: "LEMON MILK"
                 font.pointSize: 20
                 model: ["Nuclear", "Coal", "Natural Gas"]
 
@@ -124,7 +155,9 @@ ApplicationWindow {
                 id: leftChartView
                 x: 0
                 y: 40
-                width: 475
+                backgroundColor: '#3f3a3a'
+                theme: ChartView.ChartThemeBlueCerulean
+                width: 425
                 height: 300
                 HorizontalBarSeries {
                     id: leftHBar
@@ -154,7 +187,7 @@ ApplicationWindow {
 
         //Center Bottom Graph
         Rectangle{
-            x:525
+            x:485
             y:425
             color: "transparent"
 
@@ -164,6 +197,7 @@ ApplicationWindow {
                 y: 0
                 width: 225
                 height: 45
+                font.family: "LEMON MILK"
                 font.pointSize: 20
                 model: ["Wind", "Hydroelectric"]
 
@@ -181,7 +215,9 @@ ApplicationWindow {
                 id: centChartView
                 x: 0
                 y: 40
-                width: 475
+                backgroundColor: '#3f3a3a'
+                theme: ChartView.ChartThemeBlueCerulean
+                width: 425
                 height: 300
                 HorizontalBarSeries {
                     id: centHBar
@@ -211,7 +247,7 @@ ApplicationWindow {
 
         //Right Bottom Graph
         Rectangle{
-            x:1050
+            x:940
             y:425
             color: "transparent"
 
@@ -221,6 +257,7 @@ ApplicationWindow {
                 y: 0
                 width: 225
                 height: 45
+                font.family: "LEMON MILK"
                 font.pointSize: 20
                 model: ["Solar", "Gasoline"]
 
@@ -238,7 +275,9 @@ ApplicationWindow {
                 id: rightChartView
                 x: 0
                 y: 40
-                width: 475
+                backgroundColor: '#3f3a3a'
+                theme: ChartView.ChartThemeBlueCerulean
+                width: 425
                 height: 300
                 HorizontalBarSeries {
                     id: rightHBar
@@ -271,16 +310,18 @@ ApplicationWindow {
 
     Rectangle {
         x: 50
-        y: 250
+        y: 190
         width: 300
         height: 250
         color: "transparent"
 
         Text {
             x: 0
-            y: 0
+            y: 20
             width: 300
             height: 50
+            color: '#ffffff'
+            font.family: "LEMON MILK"
             text: qsTr("Enter Power Usage ")
             font.pixelSize: 25
         }
@@ -288,10 +329,10 @@ ApplicationWindow {
         Slider {
             id: slider
             x: 0
-            y: 55
+            y: 60
             width: 300
             height: 25
-            stepSize: 0.02
+            stepSize: 1
             value: 1000
             objectName: "slider"
             Connections {
@@ -308,6 +349,8 @@ ApplicationWindow {
             y: 85
             width: 50
             height: 50
+            color: '#ffffff'
+            font.family: "LEMON MILK"
             text: "kWh: " + slider.value.toFixed()
             font.pixelSize: 20
         }
@@ -318,18 +361,30 @@ ApplicationWindow {
             y: 120
             width: 300
             height: 50
+            font.family: "LEMON MILK"
             placeholderText: qsTr("Enter Zipcode")
         }
 
         Text {
             objectName: "errorText"
             x: 0
-            y: 170
+            y: 173
             width: 300
             height: 20
             text: ""
-            font.pixelSize: 18
+            font.family: "LEMON MILK"
+            color: "#ffffff"
+            font.pixelSize: 15
         }
+    }
+
+    //White Buttons
+    Rectangle {
+        x: 50
+        y: 250
+        width: 300
+        height: 250
+        color: "transparent"
 
         Button {
             objectName: "calculateButton"
@@ -338,8 +393,9 @@ ApplicationWindow {
             y: 200
             width: 300
             height: 50
+            font.family: "LEMON MILK"
             text: "Calculate"
-            font.pixelSize: 35
+            font.pixelSize: 25
             onClicked: calculate.text = "true"
             }
 
@@ -351,8 +407,9 @@ ApplicationWindow {
             y: 260
             width: 300
             height: 50
+            font.family: "LEMON MILK"
             text: "Reset"
-            font.pixelSize: 35
+            font.pixelSize: 25
             onClicked: reset.text = "true"
         }
 
@@ -363,8 +420,9 @@ ApplicationWindow {
             y: 320
             width: 300
             height: 50
+            font.family: "LEMON MILK"
             text: "Save"
-            font.pixelSize: 35
+            font.pixelSize: 25
             onClicked: saveButton.text = "true"
         }
 
@@ -375,16 +433,14 @@ ApplicationWindow {
             y: 380
             width: 300
             height: 50
+            font.family: "LEMON MILK"
             text: "Load"
-            font.pixelSize: 35
+            font.pixelSize: 25
             onClicked: loadButton.text = "true"
         }
-
-
     }
 
-
-
+    //Orange Buttons
     Rectangle {
         x: 50
         y: 700
@@ -399,11 +455,12 @@ ApplicationWindow {
             y: 0
             width: 300
             height: 50
-            text: "Team"
-            font.pixelSize: 35
+            font.family: "LEMON MILK"
+            text: "The Team"
+            font.pixelSize: 25
             onClicked: teamButton.text = "true"
             palette  {
-                button: "darkorange"
+                button: "greenyellow"
             }
         }
 
@@ -414,11 +471,12 @@ ApplicationWindow {
             y: 60
             width: 300
             height: 50
-            font.pixelSize: 35
-             text: "About CalcuGator"
+            font.pixelSize: 25
+            font.family: "LEMON MILK"
+            text: "About This"
             onClicked: aboutCalcugatorButton.text = "true"
             palette  {
-                button: "darkorange"
+                button: "greenyellow"
             }
 
         }
@@ -441,7 +499,7 @@ ApplicationWindow {
         x: 400
         y: 25
         width: parent.width - 400 - 50
-        height: parent.height - 25 - 50 - 50
+        height: parent.height - 25
         color: background_color
 
         Rectangle{
@@ -518,7 +576,7 @@ ApplicationWindow {
         x: 400
         y: 25
         width: parent.width - 400 - 50
-        height: parent.height - 25 - 50 - 50
+        height: parent.height - 25
         color: background_color
         Text{
             x:25
