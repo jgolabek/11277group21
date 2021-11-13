@@ -66,7 +66,7 @@ def verify_zip(zipcode):
 
 def file_save(zip, slider):
     try:
-        name, _ = QFileDialog.getSaveFileName()
+        name, _ = PyQt5.QtWidgets.QFileDialog.getSaveFileName()
         file = open(name,'w')
         text = f'{{\"slider\": \"{slider}\", \"zipcode\": \"{zip}\"}}'
         file.write(text)
@@ -83,7 +83,7 @@ def display_dialog(dialog):
 
 def file_load():
     try:
-        name, _ = QFileDialog.getOpenFileName()
+        name, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName()
         with open(name) as f:
             data = json.load(f)
         return data

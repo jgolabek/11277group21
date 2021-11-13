@@ -482,17 +482,6 @@ ApplicationWindow {
         }
     }
 
-
-    Rectangle {
-        id: rectangle12
-        x: 187
-        y: 92
-        width: r_manager.width
-        height: r_manager.height
-        color: "blue"
-        objectName: "foo_object"
-    }
-
     Rectangle{
         objectName: "teamDialog"
         visible: false
