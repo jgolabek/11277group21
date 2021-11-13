@@ -104,8 +104,10 @@ ApplicationWindow {
             z: 0
             BarSeries {
                 id: scoreBars
-                axisX: BarCategoryAxis { categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
+                axisX: BarCategoryAxis { 
+                    categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
                 axisY: ValueAxis {
+                    visible: false
                     id: valueAxisScore
                     max: 1000
                 }
@@ -162,8 +164,9 @@ ApplicationWindow {
                 HorizontalBarSeries {
                     id: leftHBar
                     axisX: ValueAxis {
+                        visible: false
                         id: valueAxisLeft
-                        max: 500
+                        max: 1000
                     }
                     axisY: BarCategoryAxis {
                         categories: ["CO2", "H20" , "S20", "Acres"]
@@ -222,8 +225,9 @@ ApplicationWindow {
                 HorizontalBarSeries {
                     id: centHBar
                     axisX: ValueAxis {
+                        visible: false
                         id: valueAxisCent
-                        max: 500
+                        max: 1000
                     }
                     axisY: BarCategoryAxis {
                         categories: ["CO2", "H20" , "S20", "Acres"]
@@ -282,8 +286,9 @@ ApplicationWindow {
                 HorizontalBarSeries {
                     id: rightHBar
                     axisX: ValueAxis {
+                        visible: false
                         id: valueAxisRight
-                        max: 500
+                        max: 1000
                     }
                     axisY: BarCategoryAxis {
                         categories: ["CO2", "H20" , "S20", "Acres"]
