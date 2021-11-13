@@ -141,7 +141,9 @@ def GetMonthlyBill(zipcode, kWh):
     monthly_cost = kWh * costRate / 100
     state_avg_cost = avg_consumption * costRate / 100
 
-    return monthly_cost, state_avg_cost
+    arry = [round(monthly_cost,2), round(state_avg_cost,2)]
+
+    return arry
 
 # #FIXME This is a test, remove before pushing
 # monthly_cost, avg_monthly_cost = GetMonthlyBill(int(sys.argv[1]), float(sys.argv[2]))

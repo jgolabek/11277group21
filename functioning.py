@@ -19,6 +19,7 @@ class Bridge(PyQt5.QtCore.QObject):
     _kWh = 0
     _zip = 0
     updateScore = PyQt5.QtCore.pyqtSignal()
+    calculate = PyQt5.QtCore.pyqtSignal()
 
     #For every graph, a Connections "object" must be created to react to this signal
     #and call the corresponding slot to update the chart data
@@ -40,6 +41,14 @@ class Bridge(PyQt5.QtCore.QObject):
         impact[2] = convs.kWhtoSO2(self._kWh)[source]
         impact[3] = convs.kWhtoAcres(self._kWh)[source]
         return impact
+    
+    @PyQt5.QtCore.pyqtSlot(float)
+    def callCalculate(self):
+        self.calculate.emit()
+
+    @PyQt5.QtCore.pyqtSlot(result=list)
+    def getCosts(self):
+        return zipConvs.GetMonthlyBill(self._zip, self._kWh)
 
     #TODO: Add slots to update zip code output when the appropriate textbox is implemented
 
@@ -138,6 +147,7 @@ def interact():
         if verify_zip(zipcode.property("text")) == "":
         #Set zipcode value, uipdate texbox (when implemented)
             bridge._zip = int(zipcode.property("text"))
+            bridge.callCalculate()
         calculate_button.setProperty("text", "Calculate")
 
 if __name__ == '__main__':

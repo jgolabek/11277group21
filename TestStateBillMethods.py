@@ -30,11 +30,11 @@ class TestStateBillMethods(unittest.TestCase):
 
 
     def test_specific_cases(self):
-        self.assertEqual(convs.GetMonthlyBill(35000,625), (78.5625,143.9265))
-        self.assertEqual(convs.GetMonthlyBill(5000,550), (107.47,110.79180000000001))
-        self.assertEqual(convs.GetMonthlyBill(90900,690), (141.105,116.97399999999999))
-        self.assertEqual(convs.GetMonthlyBill(45612,1000), (122.9,107.2917))
-        self.assertEqual(convs.GetMonthlyBill(12000,100), (18.36,110.5272))
+        self.assertEqual(convs.GetMonthlyBill(35000,625), [78.56,143.93])
+        self.assertEqual(convs.GetMonthlyBill(5000,550), [107.47,110.79])
+        self.assertEqual(convs.GetMonthlyBill(90900,690), [141.10,116.97])
+        self.assertEqual(convs.GetMonthlyBill(45612,1000), [122.9,107.29])
+        self.assertEqual(convs.GetMonthlyBill(12000,100), [18.36,110.53])
 
 
 

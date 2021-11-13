@@ -22,6 +22,41 @@ ApplicationWindow {
         font.pointSize: 30
     }
 
+    Rectangle {
+        x: 50
+        y: 175
+        width: 100
+        height: 100
+        color: "transparent"
+
+        Label {
+            id: personalCost
+            x: 0
+            y: 0
+            width: 100
+            height: 50
+            text: qsTr("Monthly Bill: " + "$0.0")
+            font.pixelSize: 20
+        }
+        Label {
+            id: stateCost
+            x: 0
+            y: 25
+            width: 100
+            height: 50
+            text: qsTr("State Avg Monthly Bill: " + "$0.0")
+            font.pixelSize: 20
+        }
+        Connections {
+            target: bridge
+            onCalculate: {
+                var costs = bridge.getCosts()
+                personalCost.text = qsTr("Monthly Bill: $" + costs[0])
+                stateCost.text = qsTr("State Avg Monthly Bill: $" + costs[1])
+            }
+        }
+    }
+
     //Top Graph
     Rectangle{
         x: 400
