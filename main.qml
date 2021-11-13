@@ -227,7 +227,7 @@ ApplicationWindow {
                     axisX: ValueAxis {
                         visible: false
                         id: valueAxisCent
-                        max: 1000
+                        max: 750
                     }
                     axisY: BarCategoryAxis {
                         categories: ["CO2", "H20" , "S20", "Acres"]
@@ -506,9 +506,10 @@ ApplicationWindow {
                 source: "images/joe_scaled.jpg"
             }
             Text{
+                color: "white"
                 x: image_size + 50
                 y: 50
-                text: "Joe is a cool guy"
+                text: "Joe is a florida native, born and raised in \nTampa florda. His passion for front-end \ndevelopment and climate change led to his\nparticipation in this project."
             }
         }
 
@@ -522,6 +523,7 @@ ApplicationWindow {
                 source: "images/thomas_scaled.jpg"
             }
             Text{
+                color: "white"
                 x: image_size + 50
                 y: 50
                 text: "Thomas is a cool guy"
@@ -539,6 +541,7 @@ ApplicationWindow {
                 source: "images/kevin_scaled.jpg"
             }
             Text{
+                color: "white"
                 x: image_size + 50
                 y: 50
                 text: "Kevin is a cool guy"
@@ -556,6 +559,7 @@ ApplicationWindow {
                 source: "images/justin_scaled.jpg"
             }
             Text{
+                color: "white"
                 x: image_size + 50
                 y: 50
                 text: "Justin is a cool guy"
@@ -573,6 +577,7 @@ ApplicationWindow {
         height: parent.height - 25
         color: background_color
         Text{
+            color: "white"
             x:25
             y:25
             text: "Something something powerful computational engine"
