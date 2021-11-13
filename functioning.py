@@ -62,6 +62,12 @@ def verify_zip(zipcode):
         int(zipcode)
     except:
         error_message = "Error: Please input a valid zipcode"
+    
+    if error_message == "":
+        try:
+            zipConvs.ZiptoState(int(zipcode))
+        except KeyError:
+            error_message = "Error: Please input a valid zipcode"
     return error_message
 
 def file_save(zip, slider):
