@@ -24,7 +24,7 @@ ApplicationWindow {
 
     Image {
         id: image
-        x: -14
+        x: 205
         y: -9
         width: 220
         height: 197
@@ -34,7 +34,20 @@ ApplicationWindow {
 
     Text {
         x: 40
-        y: 135
+        y: 83
+
+        id: energyText
+        width: 369
+        height: 90
+        color: "#ffffff"
+        font.family: "LEMON MILK"
+        text: qsTr("Energy")
+        font.pointSize: 30
+    }
+
+    Text {
+        x: 40
+        y: 130
 
         id: calcugator
         width: 369
@@ -104,7 +117,7 @@ ApplicationWindow {
             z: 0
             BarSeries {
                 id: scoreBars
-                axisX: BarCategoryAxis { 
+                axisX: BarCategoryAxis {
                     categories: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydro", "Wind", "Natural Gas" ] }
                 axisY: ValueAxis {
                     visible: false
@@ -130,7 +143,7 @@ ApplicationWindow {
         //Left Bottom Graph
         Rectangle{
             x:0
-            y:425
+            y:450
             color: "transparent"
 
             ComboBox {
@@ -140,8 +153,9 @@ ApplicationWindow {
                 width: 225
                 height: 45
                 font.family: "LEMON MILK"
-                font.pointSize: 20
-                model: ["Nuclear", "Coal", "Natural Gas"]
+                font.pointSize: 10
+                model: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydroelectric", "Wind", "Natural Gas"]
+                currentIndex: 2 //Default: nuclear
 
                 Connections {
                     target: leftChoice
@@ -190,8 +204,8 @@ ApplicationWindow {
 
         //Center Bottom Graph
         Rectangle{
-            x:485
-            y:425
+            x:475
+            y:450
             color: "transparent"
 
             ComboBox {
@@ -201,8 +215,9 @@ ApplicationWindow {
                 width: 225
                 height: 45
                 font.family: "LEMON MILK"
-                font.pointSize: 20
-                model: ["Wind", "Hydroelectric"]
+                font.pointSize: 10
+                model: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydroelectric", "Wind", "Natural Gas"]
+                currentIndex: 5 //Default: wind
 
                 Connections {
                     target: centChoice
@@ -251,8 +266,8 @@ ApplicationWindow {
 
         //Right Bottom Graph
         Rectangle{
-            x:940
-            y:425
+            x:950
+            y:450
             color: "transparent"
 
             ComboBox {
@@ -262,8 +277,9 @@ ApplicationWindow {
                 width: 225
                 height: 45
                 font.family: "LEMON MILK"
-                font.pointSize: 20
-                model: ["Solar", "Gasoline"]
+                font.pointSize: 10
+                model: ["Gasoline", "Solar", "Nuclear", "Coal", "Hydroelectric", "Wind", "Natural Gas"]
+                currentIndex: 1 //Default: solar
 
                 Connections {
                     target: rightChoice
@@ -509,24 +525,27 @@ ApplicationWindow {
                 color: "white"
                 x: image_size + 50
                 y: 50
-                text: "Joe is a florida native, born and raised in \nTampa florda. His passion for front-end \ndevelopment and climate change led to his\nparticipation in this project."
+                font.family: "LEMON MILK"
+                font.pointSize: 15
+                text: "Joe is a florida native, born and raised \nin Tampa, Florida. His passion for\nfront-end development and climate\nchange led to his participation in this\nproject as project manager."
             }
         }
 
         Rectangle{
-            y:500
+            y:400
             id: thomasRectangle
             Image{
                 x: 25
-                y:  25
-
+                y: 25
                 source: "images/thomas_scaled.jpg"
             }
             Text{
                 color: "white"
                 x: image_size + 50
                 y: 50
-                text: "Thomas is a cool guy"
+                font.family: "LEMON MILK"
+                font.pointSize: 15
+                text: "Thomas is a Computer Engineer from\nTallahassee, Florida, and was a backend\ndeveloper for the Energy Calcugator.\nHe hopes that this tool will inspire\nstudents to become involved with\nfuture conservation efforts."
             }
         }
 
@@ -537,31 +556,33 @@ ApplicationWindow {
             Image{
                 x: 25
                 y:  25
-
                 source: "images/kevin_scaled.jpg"
             }
             Text{
                 color: "white"
                 x: image_size + 50
                 y: 50
+                font.family: "LEMON MILK"
+                font.pointSize: 15
                 text: "Kevin is a cool guy"
             }
         }
 
         Rectangle{
             x:750
-            y:500
+            y:400
             id: justinRectangle
             Image{
                 x: 25
                 y:  25
-
                 source: "images/justin_scaled.jpg"
             }
             Text{
                 color: "white"
                 x: image_size + 50
                 y: 50
+                font.family: "LEMON MILK"
+                font.pointSize: 15
                 text: "Justin is a cool guy"
             }
         }
@@ -576,11 +597,58 @@ ApplicationWindow {
         width: parent.width - 400 - 50
         height: parent.height - 25
         color: background_color
+
+        Text {
+            x: 300
+            y: 25
+            id: aboutTitle
+            width: 369
+            height: 90
+            color: "greenyellow"
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 50
+            font.family: "LEMON MILK"
+            text: qsTr("Energy CalcuGator v1.0")
+        }
+
         Text{
+            id: aboutInfo
             color: "white"
             x:25
-            y:25
-            text: "Something something powerful computational engine"
+            y:125
+            font.family: "LEMON MILK"
+            font.pointSize: 20
+            lineHeight: 1.0
+            text: "Welcome to Energy Calcugator!\n
+Energy Calcugator is an educational tool meant to teach users about their personal\nimpact on the environment through energy usage.
+To use the program, adjust the slider to input your monthly energy usage in\nkiloWatt-hours and observe how different types of energy sources would provide a\ndifferent impact on the environment.
+If desired, you can also input your zip code into the textbox and press 'Calculate'\nto get an estimate of your energy bill compared to others in your state.
+The bottom graphs can be changed using the lists to see the different types of\nenvironmental impacts for different energy sources."
+        }
+
+        Text{
+            id: aboutSources
+            color: "white"
+            x:25
+            y:565
+            font.family: "LEMON MILK"
+            font.pointSize: 8
+            lineHeight: 0.5
+            text: "Conversion Data Sources:\n
+https://www.eia.gov/electricity/sales_revenue_price/pdf/table5_a.pdf\n
+https://www.eia.gov/tools/faqs/faq.php?id=667&t=2\n
+https://www.eia.gov/tools/faqs/faq.php?id=74&t=11\n
+https://www.eia.gov/environment/emissions/co2_vol_mass.php\n
+https://www.un.org/esa/sustdev/sdissues/energy/op/hydro_tremblaypaper.pdf\n
+https://www.ucsusa.org/resources/environmental-impacts-solar-power\n
+https://www.nrc.gov/reading-rm/doc-collections/nuregs/staff/sr1437/v1/tbl8-2.html\n
+https://docs.wind-watch.org/US-footprints-Strata-2017.pdf\n
+https://www.energy.gov/eere/geothermal/geothermal-power-plants-minimizing-land-use-and-impact\n
+https://pubmed.ncbi.nlm.nih.gov/19774326/\n
+https://www.ucsusa.org/resources/water-natural-gas\n
+http://large.stanford.edu/courses/2017/ph241/styles2/\n
+http://www.leedco.org/files/AWEA-Emissions-Comparison.pdf"
+
         }
     }
 
