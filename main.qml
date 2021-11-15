@@ -33,7 +33,7 @@ ApplicationWindow {
 
         Text {
             x: 20
-            y: 35
+            y: 25
 
             id: energyText
             width: 369
@@ -351,13 +351,13 @@ ApplicationWindow {
 
         Text {
             x: 0
-            y: 20
+            y: 25
             width: 300
             height: 50
             color: '#ffffff'
             font.family: "LEMON MILK"
             text: qsTr("Enter Power Usage ")
-            font.pixelSize: 25
+            font.pixelSize: 20
         }
 
         Slider {
