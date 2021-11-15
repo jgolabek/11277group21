@@ -56,16 +56,25 @@ ApplicationWindow {
         height: 100
         color: "transparent"
 
-        Label {
-            id: personalCost
-            x: 0
-            y: 0
-            width: 100
-            height: 50
-            font.family: "LEMON MILK"
-            color: "#ffffff"
-            text: qsTr("Monthly Bill: " + "$0.00")
-            font.pixelSize: 20
+        Rectangle{
+            x:0
+            y:0
+            width:300
+            height:60
+            color:"#3f3a3a"
+            radius: 10
+
+            Label {
+                id: personalCost
+                x: 15
+                y: 5
+                width: 100
+                height: 50
+                font.family: "LEMON MILK"
+                color: "#ffffff"
+                text: qsTr("Monthly Bill: " + "$0.00")
+                font.pixelSize: 20
+            }
         }
         Label {
             id: stateCost
@@ -78,6 +87,20 @@ ApplicationWindow {
             text: qsTr("State Avg Monthly Bill: " + "$0.00")
             font.pixelSize: 20
         }
+
+        Button {
+            objectName: "calculateButton"
+            id: calculate
+            x: 0
+            y: 70
+            width: 300
+            height: 50
+            font.family: "LEMON MILK"
+            text: "Calculate Bill"
+            font.pixelSize: 25
+            onClicked: calculate.text = "true"
+            }
+
         Connections {
             target: bridge
             onCalculate: {
@@ -392,30 +415,16 @@ ApplicationWindow {
     //White Buttons
     Rectangle {
         x: 50
-        y: 250
+        y: 530
         width: 300
         height: 250
         color: "transparent"
 
         Button {
-            objectName: "calculateButton"
-            id: calculate
-            x: 0
-            y: 200
-            width: 300
-            height: 50
-            font.family: "LEMON MILK"
-            text: "Calculate Bill"
-            font.pixelSize: 25
-            onClicked: calculate.text = "true"
-            }
-
-
-        Button {
             objectName: "resetButton"
             id: reset
             x: 0
-            y: 260
+            y: 0
             width: 300
             height: 50
             font.family: "LEMON MILK"
@@ -428,7 +437,7 @@ ApplicationWindow {
             objectName: "saveButton"
             id: saveButton
             x: 0
-            y: 320
+            y: 60
             width: 300
             height: 50
             font.family: "LEMON MILK"
@@ -441,7 +450,7 @@ ApplicationWindow {
             objectName: "loadButton"
             id: loadButton
             x: 0
-            y: 380
+            y: 120
             width: 300
             height: 50
             font.family: "LEMON MILK"
@@ -449,21 +458,12 @@ ApplicationWindow {
             font.pixelSize: 25
             onClicked: loadButton.text = "true"
         }
-    }
-
-    //Orange Buttons
-    Rectangle {
-        x: 50
-        y: 700
-        width: 300
-        height: 250
-        color: "transparent"
 
         Button {
             objectName: "teamButton"
             id: teamButton
             x: 0
-            y: 0
+            y: 200
             width: 300
             height: 50
             font.family: "LEMON MILK"
@@ -479,7 +479,7 @@ ApplicationWindow {
             objectName: "aboutCalcugatorButton"
             id: aboutCalcugatorButton
             x: 0
-            y: 60
+            y: 260
             width: 300
             height: 50
             font.pixelSize: 25
@@ -491,6 +491,17 @@ ApplicationWindow {
             }
 
         }
+    }
+
+    //Orange Buttons
+    Rectangle {
+        x: 50
+        y: 700
+        width: 300
+        height: 250
+        color: "transparent"
+
+        
     }
 
     Rectangle{
