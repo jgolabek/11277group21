@@ -7,7 +7,7 @@ import QtCharts 2.3
 ApplicationWindow {
     visible: true
     width: 1830
-    height: 850
+    height: 875
     color: "#151515"
     property var image_size: 250
     property var background_color: "#151515"
@@ -187,7 +187,7 @@ ApplicationWindow {
                 backgroundColor: '#3f3a3a'
                 theme: ChartView.ChartThemeBlueCerulean
                 width: 425
-                height: 300
+                height: 345
                 HorizontalBarSeries {
                     id: leftHBar
                     axisX: ValueAxis {
@@ -249,7 +249,7 @@ ApplicationWindow {
                 backgroundColor: '#3f3a3a'
                 theme: ChartView.ChartThemeBlueCerulean
                 width: 425
-                height: 300
+                height: 345
                 HorizontalBarSeries {
                     id: centHBar
                     axisX: ValueAxis {
@@ -311,7 +311,7 @@ ApplicationWindow {
                 backgroundColor: '#3f3a3a'
                 theme: ChartView.ChartThemeBlueCerulean
                 width: 425
-                height: 300
+                height: 345
                 HorizontalBarSeries {
                     id: rightHBar
                     axisX: ValueAxis {
