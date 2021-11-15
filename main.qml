@@ -15,48 +15,38 @@ ApplicationWindow {
     Rectangle {
         id: rectangle2
         x: 15
-        y: 36
+        y: 30
         width: 382
         height: 158
         color: "#3f3a3a"
         radius: 10
+
+        Image {
+            id: image
+            x: 175
+            y: -50
+            width: 220
+            height: 197
+            source: "images/logo.png"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Text {
+            x: 20
+            y: 5
+
+            id: energyText
+            width: 369
+            height: 90
+            color: "#ffffff"
+            font.family: "LEMON MILK"
+            text: qsTr("Energy\nCalcuGator")
+            font.pointSize: 30
+        }
     }
 
-    Image {
-        id: image
-        x: 205
-        y: -9
-        width: 220
-        height: 197
-        source: "images/logo.png"
-        fillMode: Image.PreserveAspectFit
-    }
+    
 
-    Text {
-        x: 40
-        y: 83
-
-        id: energyText
-        width: 369
-        height: 90
-        color: "#ffffff"
-        font.family: "LEMON MILK"
-        text: qsTr("Energy")
-        font.pointSize: 30
-    }
-
-    Text {
-        x: 40
-        y: 130
-
-        id: calcugator
-        width: 369
-        height: 90
-        color: "#ffffff"
-        font.family: "LEMON MILK"
-        text: qsTr("CalcuGator")
-        font.pointSize: 30
-    }
 
     //Bills Text
     Rectangle {
@@ -74,7 +64,7 @@ ApplicationWindow {
             height: 50
             font.family: "LEMON MILK"
             color: "#ffffff"
-            text: qsTr("Monthly Bill: " + "$0.00")
+            text: qsTr("Estimated Monthly Bill: " + "$0.00")
             font.pixelSize: 20
         }
         Label {
@@ -101,7 +91,7 @@ ApplicationWindow {
     //Top Graph
     Rectangle{
         x: 410
-        y: 30
+        y: 18
         color: "transparent"
 
         ChartView {
@@ -415,7 +405,7 @@ ApplicationWindow {
             width: 300
             height: 50
             font.family: "LEMON MILK"
-            text: "Calculate"
+            text: "Calculate Bill"
             font.pixelSize: 25
             onClicked: calculate.text = "true"
             }
@@ -494,7 +484,7 @@ ApplicationWindow {
             height: 50
             font.pixelSize: 25
             font.family: "LEMON MILK"
-            text: "About This"
+            text: "About CalcuGator"
             onClicked: aboutCalcugatorButton.text = "true"
             palette  {
                 button: "greenyellow"
@@ -526,7 +516,7 @@ ApplicationWindow {
                 x: image_size + 50
                 y: 50
                 font.family: "LEMON MILK"
-                font.pointSize: 15
+                font.pointSize: 12
                 text: "Joe is a florida native, born and raised \nin Tampa, Florida. His passion for\nfront-end development and climate\nchange led to his participation in this\nproject as project manager."
             }
         }
@@ -544,7 +534,7 @@ ApplicationWindow {
                 x: image_size + 50
                 y: 50
                 font.family: "LEMON MILK"
-                font.pointSize: 15
+                font.pointSize: 12
                 text: "Thomas is a Computer Engineer from\nTallahassee, Florida, and was a backend\ndeveloper for the Energy Calcugator.\nHe hopes that this tool will inspire\nstudents to become involved with\nfuture conservation efforts."
             }
         }
@@ -563,7 +553,7 @@ ApplicationWindow {
                 x: image_size + 50
                 y: 50
                 font.family: "LEMON MILK"
-                font.pointSize: 15
+                font.pointSize: 12
                 text: "Kevin is a cool guy"
             }
         }
@@ -582,7 +572,7 @@ ApplicationWindow {
                 x: image_size + 50
                 y: 50
                 font.family: "LEMON MILK"
-                font.pointSize: 15
+                font.pointSize: 12
                 text: "Justin is a cool guy"
             }
         }
@@ -602,11 +592,11 @@ ApplicationWindow {
             x: 300
             y: 25
             id: aboutTitle
-            width: 369
-            height: 90
+
             color: "greenyellow"
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 50
+            width: parent.width
+            horizontalAlignment: Text.AlignCenter
+            font.pointSize: 35
             font.family: "LEMON MILK"
             text: qsTr("Energy CalcuGator v1.0")
         }
@@ -617,38 +607,49 @@ ApplicationWindow {
             x:25
             y:125
             font.family: "LEMON MILK"
-            font.pointSize: 20
+            font.pointSize: 15
             lineHeight: 1.0
-            text: "Welcome to Energy Calcugator!\n
+            text: "\nWelcome to Energy Calcugator!\n
 Energy Calcugator is an educational tool meant to teach users about their personal\nimpact on the environment through energy usage.
-To use the program, adjust the slider to input your monthly energy usage in\nkiloWatt-hours and observe how different types of energy sources would provide a\ndifferent impact on the environment.
-If desired, you can also input your zip code into the textbox and press 'Calculate'\nto get an estimate of your energy bill compared to others in your state.
-The bottom graphs can be changed using the lists to see the different types of\nenvironmental impacts for different energy sources."
+\nTo use the program, adjust the slider to input your monthly energy usage in\nkiloWatt-hours and observe how different types of energy sources would provide a\ndifferent impact on the environment.
+If desired, you can also input your zip code into the textbox and press 'Calculate Bill'\nto get an estimate of your energy bill compared to others in your state.
+The bottom graphs can be changed using the associated dropdowns to see the different types of\nenvironmental impacts for different energy sources."
         }
 
         Text{
             id: aboutSources
             color: "white"
             x:25
-            y:565
+            y:650
             font.family: "LEMON MILK"
             font.pointSize: 8
             lineHeight: 0.5
-            text: "Conversion Data Sources:\n
+            text:"Conversion Data Sources:\n\n
+https://docs.wind-watch.org/US-footprints-Strata-2017.pdf\n
+https://www.nrc.gov/reading-rm/doc-collections/nuregs/staff/sr1437/v1/tbl8-2.html\n
+https://pubmed.ncbi.nlm.nih.gov/19774326/\n
+https://www.ucsusa.org/resources/water-natural-gas\n
+http://large.stanford.edu/courses/2017/ph241/styles2/\n
+http://www.leedco.org/files/AWEA-Emissions-Comparison.pdf\n
+https://www.energy.gov/eere/geothermal/geothermal-power-plants-minimizing-land-use-and-impact"
+
+        }
+
+        Text{
+            id: aboutSources2
+            color: "white"
+            x: parent.width/2 + 50
+            y:650
+            font.family: "LEMON MILK"
+            font.pointSize: 8
+            lineHeight: 0.5
+            text: "\n\n
 https://www.eia.gov/electricity/sales_revenue_price/pdf/table5_a.pdf\n
 https://www.eia.gov/tools/faqs/faq.php?id=667&t=2\n
 https://www.eia.gov/tools/faqs/faq.php?id=74&t=11\n
 https://www.eia.gov/environment/emissions/co2_vol_mass.php\n
 https://www.un.org/esa/sustdev/sdissues/energy/op/hydro_tremblaypaper.pdf\n
-https://www.ucsusa.org/resources/environmental-impacts-solar-power\n
-https://www.nrc.gov/reading-rm/doc-collections/nuregs/staff/sr1437/v1/tbl8-2.html\n
-https://docs.wind-watch.org/US-footprints-Strata-2017.pdf\n
-https://www.energy.gov/eere/geothermal/geothermal-power-plants-minimizing-land-use-and-impact\n
-https://pubmed.ncbi.nlm.nih.gov/19774326/\n
-https://www.ucsusa.org/resources/water-natural-gas\n
-http://large.stanford.edu/courses/2017/ph241/styles2/\n
-http://www.leedco.org/files/AWEA-Emissions-Comparison.pdf"
-
+https://www.ucsusa.org/resources/environmental-impacts-solar-power"
         }
     }
 

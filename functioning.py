@@ -145,7 +145,7 @@ def interact():
     if about_calcugator_button.property("text") == "true":
         team_dialog.setProperty("visible", "false")
         display_dialog(about_calcugator_dialog)
-        about_calcugator_button.setProperty("text", "About This")
+        about_calcugator_button.setProperty("text", "About CalcuGator")
 
     #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":
@@ -154,7 +154,7 @@ def interact():
         #Set zipcode value, uipdate texbox (when implemented)
             bridge._zip = int(zipcode.property("text"))
             bridge.callCalculate()
-        calculate_button.setProperty("text", "Calculate")
+        calculate_button.setProperty("text", "Calculate Bill")
 
 if __name__ == '__main__':
     os.environ['QT_QUICK_CONTROLS_STYLE'] = 'Default'
