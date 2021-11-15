@@ -64,7 +64,7 @@ ApplicationWindow {
             height: 50
             font.family: "LEMON MILK"
             color: "#ffffff"
-            text: qsTr("Estimated Monthly Bill: " + "$0.00")
+            text: qsTr("Monthly Bill: " + "$0.00")
             font.pixelSize: 20
         }
         Label {
