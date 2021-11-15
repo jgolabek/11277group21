@@ -17,7 +17,7 @@ ApplicationWindow {
         x: 15
         y: 30
         width: 382
-        height: 158
+        height: 180
         color: "#3f3a3a"
         radius: 10
 
