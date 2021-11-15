@@ -33,7 +33,7 @@ ApplicationWindow {
 
         Text {
             x: 20
-            y: 5
+            y: 35
 
             id: energyText
             width: 369
@@ -45,7 +45,7 @@ ApplicationWindow {
         }
     }
 
-    
+
 
 
     //Bills Text
@@ -67,25 +67,25 @@ ApplicationWindow {
             Label {
                 id: personalCost
                 x: 15
-                y: 5
+                y: 10
                 width: 100
                 height: 50
                 font.family: "LEMON MILK"
                 color: "#ffffff"
                 text: qsTr("Monthly Bill: " + "$0.00")
-                font.pixelSize: 20
+                font.pixelSize: 15
             }
         }
         Label {
             id: stateCost
-            x: 0
-            y: 25
+            x: 15
+            y: 30
             width: 100
             height: 50
             font.family: "LEMON MILK"
             color: "#ffffff"
             text: qsTr("State Avg Monthly Bill: " + "$0.00")
-            font.pixelSize: 20
+            font.pixelSize: 15
         }
 
         Button {
@@ -501,7 +501,7 @@ ApplicationWindow {
         height: 250
         color: "transparent"
 
-        
+
     }
 
     Rectangle{
