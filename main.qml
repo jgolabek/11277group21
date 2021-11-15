@@ -584,7 +584,7 @@ ApplicationWindow {
                 y: 50
                 font.family: "LEMON MILK"
                 font.pointSize: 12
-                text: "Justin is a computer engineering\nstudent at the University of Florida.\nHe worked on the backend and\ncontinuous integration portions of this\nproject, as well as serving as scrum master."
+                text: "Justin is a computer engineering\nstudent at the University of Florida.\nHe worked on the backend and\ncontinuous integration portions \nof this project, as well as \nserving as scrum master."
             }
         }
 
