@@ -565,10 +565,7 @@ ApplicationWindow {
                 y: 50
                 font.family: "LEMON MILK"
                 font.pointSize: 12
-                text: "Kevin is a Computer Engineering major \nand Physics minor. He is from Medan,
-Indonesia. He likes designing cool \ninterfaces and he is the team's \nfront-end developer. He hopes that
-this software tool will \nhelp inspire younger generations to
-be more conscious of the environment."
+                text:  "Kevin is a Computer Engineering \nmajor and Physics minor. He is \nfromn Medan, Indonesia. He likes \ndesigning cool interfaces and he is\none of the team's front-end \ndevelopers. He hopes that this \nsoftware tool will help inspire \nyounger generations to be more \nconscious of the environment."
             }
         }
 
