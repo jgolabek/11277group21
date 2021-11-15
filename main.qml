@@ -528,7 +528,7 @@ ApplicationWindow {
                 y: 50
                 font.family: "LEMON MILK"
                 font.pointSize: 12
-                text: "Joe is a florida native, born and raised \nin Tampa, Florida. His passion for\nfront-end development and climate\nchange led to his participation in this\nproject as project manager."
+                text: "Joe is a florida native, born and raised \nin Tampa, Florida, and UF student. His \npassion for front-end development \nand climate change led to his \nparticipation in this project as project \nmanager and UI designer."
             }
         }
 
