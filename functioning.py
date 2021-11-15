@@ -52,6 +52,10 @@ class Bridge(PyQt5.QtCore.QObject):
 
     #TODO: Add slots to update zip code output when the appropriate textbox is implemented
 
+def hide_dialogs(about_calcugator_dialog, team_dialog):
+    about_calcugator_dialog.setProperty("visible", "false")
+    team_dialog.setProperty("visible", "false")
+
 def verify_zip(zipcode):
     error_message = ""
     if len(zipcode) == 0:
@@ -112,6 +116,7 @@ def interact():
 
     #reset all fields when reset button is pressed
     if reset_button.property("text") == "true":
+        hide_dialogs(about_calcugator_dialog, team_dialog)
         slider.setProperty("value", 1000)
         zipcode.setProperty("text", "")
         error_text.setProperty("text", "")
@@ -120,6 +125,7 @@ def interact():
 
     #reset all fields when reset button is pressed
     if save_button.property("text") == "true":
+        hide_dialogs(about_calcugator_dialog, team_dialog)
         save_button.setProperty("text", "Save")
         error_message = verify_zip(zipcode.property("text"))
         if error_message == "":
@@ -127,6 +133,7 @@ def interact():
         error_text.setProperty("text", error_message)
 
     if load_button.property("text") == "true":
+        hide_dialogs(about_calcugator_dialog, team_dialog)
         load_button.setProperty("text", "Load")
         data = file_load()
         try:
@@ -145,16 +152,17 @@ def interact():
     if about_calcugator_button.property("text") == "true":
         team_dialog.setProperty("visible", "false")
         display_dialog(about_calcugator_dialog)
-        about_calcugator_button.setProperty("text", "About This")
+        about_calcugator_button.setProperty("text", "About CalcuGator")
 
     #make sure zipcode field isn't empty, <= 5 numbers, and integers
     if calculate_button.property("text") == "true":
+        hide_dialogs(about_calcugator_dialog, team_dialog)
         error_text.setProperty("text", verify_zip(zipcode.property("text")))
         if verify_zip(zipcode.property("text")) == "":
         #Set zipcode value, uipdate texbox (when implemented)
             bridge._zip = int(zipcode.property("text"))
             bridge.callCalculate()
-        calculate_button.setProperty("text", "Calculate")
+        calculate_button.setProperty("text", "Calculate Bill")
 
 if __name__ == '__main__':
     os.environ['QT_QUICK_CONTROLS_STYLE'] = 'Default'
