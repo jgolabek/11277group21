@@ -564,13 +564,11 @@ ApplicationWindow {
                 x: image_size + 50
                 y: 50
                 font.family: "LEMON MILK"
-<<<<<<< HEAD
                 font.pointSize: 15
-                text: "Kevin is a Computer Engineering major and Physics minor. \n He is from Medan, Indonesia. He likes designing cool interfaces \n and he is the team's front-end developer. \n He hopes that this software tool will \n help inspire younger generations to be more conscious of the environment."
-=======
-                font.pointSize: 12
-                text: "Kevin is a cool guy"
->>>>>>> 2a2a1cfd4509c536ba41354bd39127b54d437c35
+                text: "Kevin is a Computer Engineering major \n and Physics minor. He is from Medan, \n
+                Indonesia. He likes designing cool \n interfaces and he is the team's \n front-end developer. He hopes that \n 
+                this software tool will \n help inspire younger generations to \n 
+                be more conscious of the environment."
             }
         }
 
